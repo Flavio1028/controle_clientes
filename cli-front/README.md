@@ -1,27 +1,23 @@
-# CliFront
+# Controle de Clientes - Frontend
+- **Tag** cli-front
+- **Início** 02/2021
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 11.1.4.
 
-## Development server
+## 1) Instalação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### 1.1) Pré-requisitos:
 
-## Code scaffolding
+  - Nodejs e Anglular Cli
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2.2) Instalação dos pacotes: 
 
-## Build
+  - Rodar no diretorio principal do projeto o comando `npm install`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### 2.3) Rodar a aplicação: 
 
-## Running unit tests
+  - Executar o comando `ng serve` para um servidor de desenvolvimento. Navegar até `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 2.4) Build
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  - Rodando o build para construir o projeto. Os artefatos de construção serão armazenados no diretório dist Use o sinalizador --prod para uma construção de produção.
