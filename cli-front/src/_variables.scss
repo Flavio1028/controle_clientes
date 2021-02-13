@@ -1,5 +1,5 @@
 $theme-colors: (
-  "primary": #f37122,
+  "primary": #ff4081,
   "secondary": #012296,
 );
 
@@ -7,17 +7,11 @@ $font-family-base: "Oxygen", sans-serif;
 $font-size-base: 0.875rem;
 
 body {
+  background-image: url("./assets/img/bg.png");
   background-size: cover !important;
 }
 
 .error {
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.login {
-  /* background-image: url("/assets/img/bg-login.png") !important; */
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
