@@ -4,4 +4,5 @@ export interface Usuario {
   password: string;
   nmUser?: string;
   email?: string;
+  token?: string;
 }
