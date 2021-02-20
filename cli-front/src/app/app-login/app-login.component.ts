@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,7 +17,8 @@ export class AppLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +36,15 @@ export class AppLoginComponent implements OnInit {
   }
 
   public fazerLogin(): void {
-    console.log(this.formulario.value);
+    if (this.formulario.valid) {
+
+    } else {
+      this.toastr.warning('Por favor, informe o usuário e a senha', 'Login', {
+        timeOut: 3000,
+        positionClass: 'toast-bottom-full-width'
+      });
+    }
+
   }
 
 }
