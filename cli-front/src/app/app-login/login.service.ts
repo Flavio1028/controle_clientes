@@ -2,6 +2,7 @@ import { take } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Usuario } from './../interface/Usuario';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,7 +19,7 @@ export class LoginService {
    * Faz o login do usuario
    */
   public fazerLogin(form: any): any {
-    return this.http.post<any>(this.urlLogin, form).pipe(take(1));
+    return this.http.post<Usuario>(this.urlLogin, form).pipe(take(1));
   }
 
 }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LoginService } from './login.service';
+import { Usuario } from '../interface/Usuario';
 import { SharedService } from '../shared/shared.service';
 
 @Component({
@@ -38,10 +39,13 @@ export class AppLoginComponent implements OnInit {
     });
   }
 
+  /**
+   * Faz o login do usuário
+   */
   public fazerLogin(): void {
     if (this.formulario.valid) {
       this.spinner.show();
-      const data = { user: '', password: '' };
+      const data: Usuario = { user: this.formulario.get('user').value, password: btoa(this.formulario.get('password').value) };
       this.service.fazerLogin(data).subscribe(
         () => {
           this.spinner.hide();
