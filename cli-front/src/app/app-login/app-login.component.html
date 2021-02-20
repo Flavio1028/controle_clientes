@@ -9,20 +9,22 @@
             <span><img src="../../assets/img/logo_bar.jpg" height="30" alt="Logo"></span>
           </div>
           <!-- FORMULARIO LOGIN -->
-          <form class="needs-validation" novalidate>
+          <form class="needs-validation" [formGroup]="formulario" novalidate>
             <!-- CAMPO USUARIO -->
             <div class="form-group">
               <label for="usuario">Usuário</label>
-              <input type="text" aria-describedby="usuarioHelp" class="form-control" Placeholder="Informe seu usuário">
+              <input type="text" aria-describedby="usuarioHelp" class="form-control" Placeholder="Informe seu usuário"
+                formControlName="user">
             </div>
             <!-- CAMPO SENHA -->
             <div class="form-group">
               <label for="senha">Senha</label>
-              <input type="password" aria-describedby="senhaHelp" class="form-control" Placeholder="Informe sua senha">
+              <input type="password" aria-describedby="senhaHelp" class="form-control" Placeholder="Informe sua senha"
+                formControlName="password">
             </div>
             <!-- BTN -->
             <div>
-              <button class="btn btn-lg btn-block btn-primary">LOGIN</button>
+              <button class="btn btn-lg btn-block btn-primary" (click)="fazerLogin()">LOGIN</button>
             </div>
           </form>
         </div>
