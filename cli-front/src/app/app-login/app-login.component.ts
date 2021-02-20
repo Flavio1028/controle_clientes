@@ -4,6 +4,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { LoginService } from './login.service';
+
 @Component({
   selector: 'app-app-login',
   templateUrl: './app-login.component.html',
@@ -18,7 +20,8 @@ export class AppLoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private service: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +40,25 @@ export class AppLoginComponent implements OnInit {
 
   public fazerLogin(): void {
     if (this.formulario.valid) {
+
+      this.spinner.show();
+
+      const data = {
+        user: '',
+        password: ''
+      };
+
+      this.service.fazerLogin(data).subscribe(
+        () => {
+          this.spinner.hide();
+        }, () => {
+          this.spinner.hide();
+          this.toastr.error('Desculpe, ocorreu um erro ao realizar o login', 'Login', {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-full-width'
+          });
+        }
+      );
 
     } else {
       this.toastr.warning('Por favor, informe o usuário e a senha', 'Login', {
