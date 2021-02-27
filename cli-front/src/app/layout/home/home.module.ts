@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -9,7 +10,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [HomeComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    NgxPermissionsModule.forChild()
   ]
 })
 export class HomeModule { }
