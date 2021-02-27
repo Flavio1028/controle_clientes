@@ -47,8 +47,13 @@ export class AppLoginComponent implements OnInit {
       this.spinner.show();
       const data: Usuario = { user: this.formulario.get('user').value, password: btoa(this.formulario.get('password').value) };
       this.service.fazerLogin(data).subscribe(
-        () => {
+        (user: Usuario) => {
           this.spinner.hide();
+          if (user.user == data.user && user.password == data.password) {
+            this.router.navigateByUrl('home');
+          } else {
+            this.shService.toastWarning('Usuário/Senha inválido(s).', 'LOGIN');
+          }
         }, () => {
           this.spinner.hide();
           this.shService.toastError('Desculpe, ocorreu um erro ao realizar o login', 'LOGIN');

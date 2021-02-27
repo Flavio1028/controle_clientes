@@ -19,7 +19,7 @@ export class LoginService {
    * Faz o login do usuario
    */
   public fazerLogin(form: any): any {
-    return this.http.post<Usuario>(this.urlLogin, form).pipe(take(1));
+    return this.http.get<Usuario>(`../../assets/mock/usuario.json`).pipe(take(1));
   }
 
 }

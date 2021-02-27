@@ -1,0 +1,12 @@
+{
+  "idUser": 1,
+  "user": "teste",
+  "password": "MTIzNA==",
+  "profile": [
+    "acess_home",
+    "acess_cli"
+  ],
+  "nmUser": "Teste",
+  "email": "teste@teste.com",
+  "token": "token"
+}
