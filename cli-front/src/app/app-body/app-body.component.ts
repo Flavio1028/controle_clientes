@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../guards/auth.service';
 
 @Component({
   selector: 'app-app-body',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppBodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(): void {
+    this.auth.fazerLogout();
   }
 
 }

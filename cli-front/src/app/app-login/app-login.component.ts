@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -6,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Usuario } from '../interface/Usuario';
 import { SharedService } from '../shared/shared.service';
+import { AuthService } from '../guards/auth.service';
 
 @Component({
   selector: 'app-app-login',
@@ -19,10 +19,10 @@ export class AppLoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private spinner: NgxSpinnerService,
     private service: LoginService,
-    private shService: SharedService
+    private shService: SharedService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class AppLoginComponent implements OnInit {
         (user: Usuario) => {
           this.spinner.hide();
           if (user.user == data.user && user.password == data.password) {
-            this.router.navigateByUrl('home');
+            this.auth.carregarDadosSessao(user);
           } else {
             this.shService.toastWarning('Usuário/Senha inválido(s).', 'LOGIN');
           }

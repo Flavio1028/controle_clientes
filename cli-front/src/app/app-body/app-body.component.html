@@ -6,25 +6,26 @@
     </a>
     <!-- BOTAO MOBILE -->
     <button class="navbar-toggler border-0 p-0" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" *ngxPermissionsOnly="'acess_home'">
       <span c lass="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item" *ngxPermissionsOnly="'acess_home'" [routerLinkActive]="['active']">
+        <li class="nav-item" *ngxPermissionsOnly="'acess_home'" [routerLink]="['/home']"
+          [routerLinkActive]="['active']">
           <a class="nav-link font-weight-bolder">
             INÍCIO
           </a>
         </li>
         <li class="nav-item d-lg-none" [routerLinkActive]="['active']">
           <a href="javascript:void(0);" class="nav-link font-weight-bolder text-muted"
-            *ngxPermissionsOnly="'acess_home'">SAIR</a>
+            *ngxPermissionsOnly="'acess_home'" (click)="logout()">SAIR</a>
         </li>
       </ul>
     </div>
     <div class="d-none d-lg-block">
-      <a href="javascript:void(0);" class="nav-link font-weight-bolder text-dark"
-        *ngxPermissionsOnly="'acess_home'">SAIR</a>
+      <a href="javascript:void(0);" class="nav-link font-weight-bolder text-dark" *ngxPermissionsOnly="'acess_home'"
+        (click)="logout()">SAIR</a>
     </div>
   </nav>
   <!-- END NAVBAR -->

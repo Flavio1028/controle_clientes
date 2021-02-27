@@ -1,7 +1,7 @@
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { EventEmitter, Injectable } from '@angular/core';
 
 import { Usuario } from '../interface/Usuario';
 
@@ -10,19 +10,36 @@ import { Usuario } from '../interface/Usuario';
 })
 export class AuthService {
 
-  // Indica se o usuario esta autenticado
-  usuarioAutenticado = false;
-  // Evento que indica se o menu deve ser exibido
-  mostrarMenuEmitter = new EventEmitter<boolean>();
-
   constructor(
     private router: Router,
     private permissionsService: NgxPermissionsService
   ) { }
 
+  /**
+   * Carrega os dados do usuário ao realizar o login
+   * @param user
+   */
   carregarDadosSessao(user: Usuario): void {
-    localStorage.setItem('token', user.token + '');
+    localStorage.setItem('token', user.token);
     this.carregarDadosPerfil();
+  }
+
+  /**
+   * Recarrega a sessão salva no navegador
+   */
+  recarregarDadosSessao(): void {
+    if (localStorage.getItem('token')) {
+      try {
+        const token = this.carregarDadosToken();
+        if (token) {
+          this.carregarDadosPerfil();
+        }
+      } catch (err) {
+        this.fazerLogout();
+      }
+    } else {
+      this.fazerLogout();
+    }
   }
 
   /*
@@ -30,10 +47,21 @@ export class AuthService {
    */
   private carregarDadosPerfil(): void {
     try {
-      this.permissionsService.loadPermissions(this.carregarDadosToken().listaPermissao);
+      this.permissionsService.loadPermissions(this.carregarDadosToken().profile);
+      this.router.navigateByUrl('home');
     } catch (e) {
-      console.log('Perfil invalido!');
+      this.fazerLogout();
     }
+  }
+
+  /**
+   * Faz o logout do usuário
+   */
+  fazerLogout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+    this.permissionsService.flushPermissions();
+    this.router.navigateByUrl('login');
   }
 
   /*
