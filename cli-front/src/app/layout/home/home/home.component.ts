@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/guards/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  // Dados do usuario da sessao
+  nmUsuario: String;
+
+  // Nome perfil acesso.
+  nmProfile: String;
+
+  // Data atual
+  dtAtual: Date = new Date();
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    // Carrega s dados do usuário
+    this.nmUsuario = this.authService.carregarDadosToken()['name'];
+    this.nmProfile = this.authService.carregarDadosToken()['nmProfile'];
   }
 
 }

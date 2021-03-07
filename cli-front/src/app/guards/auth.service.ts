@@ -67,7 +67,7 @@ export class AuthService {
   /*
    * Valida o token
    */
-  private carregarDadosToken(): any {
+  public carregarDadosToken(): any {
     if (localStorage.getItem('token') !== 'null' && localStorage.getItem('token')) {
       return jwt_decode(localStorage.getItem('token'));
     }
