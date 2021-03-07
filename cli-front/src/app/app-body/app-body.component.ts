@@ -1,3 +1,4 @@
+import { SharedService } from './../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../guards/auth.service';
 
@@ -8,13 +9,27 @@ import { AuthService } from '../guards/auth.service';
 })
 export class AppBodyComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private shService: SharedService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Logout do sistema
+   */
   logout(): void {
-    this.auth.fazerLogout();
+    // Abre o modal
+    const resultado$ = this.shService.modalConfirmacao("Deseja realmente sair ? ");
+    resultado$.asObservable().subscribe(
+      dados => {
+        if (dados) {
+          this.auth.fazerLogout();
+        }
+      }
+    );
   }
 
 }
