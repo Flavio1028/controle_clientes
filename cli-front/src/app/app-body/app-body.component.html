@@ -17,6 +17,17 @@
             INÍCIO
           </a>
         </li>
+        <li class="nav-item dropdown" [routerLinkActive]="['active']">
+          <a class="nav-link font-weight-bolder dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" *ngxPermissionsOnly="['acess_cliente']">
+            Gerenciamento
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarFabrica" *ngxPermissionsOnly="'acess_cliente'">
+            <a [routerLink]="['gerenciamento/cliente']" class="dropdown-item" href="#" [routerLinkActive]="['active']">
+              Clientes
+            </a>
+          </div>
+        </li>
         <li class="nav-item d-lg-none" [routerLinkActive]="['active']">
           <a href="javascript:void(0);" class="nav-link font-weight-bolder text-muted"
             *ngxPermissionsOnly="'acess_home'" (click)="logout()">SAIR</a>
