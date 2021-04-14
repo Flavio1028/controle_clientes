@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'login', component: AppLoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule) },
+  { path: 'gerenciamento', loadChildren: () => import('./layout/gerenciamento/gerenciamento.module').then(m => m.GerenciamentoModule) },
   { path: '**', redirectTo: '/login' }
 ];
 
