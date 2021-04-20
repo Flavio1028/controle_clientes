@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { ClienteRoutingModule } from './cliente-routing.module';
 import { CliListarComponent } from './cli-listar/cli-listar.component';
@@ -9,6 +10,7 @@ import { CliListarComponent } from './cli-listar/cli-listar.component';
   declarations: [CliListarComponent],
   imports: [
     CommonModule,
+    PaginationModule.forRoot(),
     ClienteRoutingModule
   ]
 })
