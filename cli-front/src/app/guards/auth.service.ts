@@ -48,7 +48,6 @@ export class AuthService {
   private carregarDadosPerfil(): void {
     try {
       this.permissionsService.loadPermissions(this.carregarDadosToken().profile);
-      this.router.navigateByUrl('home');
     } catch (e) {
       this.fazerLogout();
     }
