@@ -20,9 +20,9 @@
                         <tr class="content-item" *ngFor="let cliente of returnedArray">
                             <th scope="row">{{ cliente.nmCliente }}</th>
                             <td>{{ cliente.email }}</td>
-                            <td>{{ cliente.cpf }}</td>
-                            <td>{{ cliente.telefoneCelular }}</td>
-                            <td>
+                            <td>{{ cliente.cpf | mask : '000.000.000-00' }}</td>
+                            <td>{{ cliente.telefoneCelular | mask : '(00) 00000-0000' }}</td>
+                            <td class="text-right">
                                 <button type="button" class="btn btn-primary btn-sm mr-1 mt-1">
                                     <i class="fas fa-eye"></i>
                                 </button>

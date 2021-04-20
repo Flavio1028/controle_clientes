@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -31,7 +32,8 @@ import { AppLoginComponent } from './app-login/app-login.component';
     SharedModule,
     Interceptor,
     HttpClientModule,
-    NgxPermissionsModule.forRoot()
+    NgxPermissionsModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [
     AuthService

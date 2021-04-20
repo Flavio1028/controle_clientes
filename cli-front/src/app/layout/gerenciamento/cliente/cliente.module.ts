@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxMaskModule } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
@@ -11,7 +12,8 @@ import { CliListarComponent } from './cli-listar/cli-listar.component';
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
-    ClienteRoutingModule
+    ClienteRoutingModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class ClienteModule { }
