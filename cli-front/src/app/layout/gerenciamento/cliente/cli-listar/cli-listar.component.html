@@ -47,10 +47,10 @@
         Nenhum cliente foi encontrado.
     </div>
     <!-- BOTOES  -->
-    <div class="container mb-3 mr-3">
+    <div class="container mb-3 mr-3" *ngxPermissionsOnly="'acess_cliente'">
         <div class="row">
             <div class="col text-right">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" [routerLink]="['/gerenciamento/cli/cadastrar']">
                     Cadastrar
                     <i class="fas fa-plus-circle"></i>
                 </button>
