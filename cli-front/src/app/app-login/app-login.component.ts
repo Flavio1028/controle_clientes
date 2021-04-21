@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -22,7 +23,8 @@ export class AppLoginComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private service: LoginService,
     private shService: SharedService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -48,16 +50,15 @@ export class AppLoginComponent implements OnInit {
       const data: Usuario = { user: this.formulario.get('user').value, password: btoa(this.formulario.get('password').value) };
       this.service.fazerLogin(data).subscribe(
         (user: Usuario) => {
-          this.spinner.hide();
           if (user.user == data.user && user.password == data.password) {
             this.auth.carregarDadosSessao(user);
+            this.router.navigateByUrl('home');
           } else {
             this.shService.toastWarning('Usuário/Senha inválido(s).', 'LOGIN');
           }
         }, () => {
-          this.spinner.hide();
           this.shService.toastError('Desculpe, ocorreu um erro ao realizar o login', 'LOGIN');
-        }
+        }, () => this.spinner.hide()
       );
     } else {
       this.shService.toastWarning('Por favor, informe o usuário e a senha', 'LOGIN');

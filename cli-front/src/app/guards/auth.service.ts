@@ -33,6 +33,7 @@ export class AuthService {
         const token = this.carregarDadosToken();
         if (token) {
           this.carregarDadosPerfil();
+          this.router.navigateByUrl('home');
         }
       } catch (err) {
         this.fazerLogout();
