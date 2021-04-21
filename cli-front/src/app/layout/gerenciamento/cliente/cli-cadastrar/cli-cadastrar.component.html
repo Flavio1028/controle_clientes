@@ -2,4 +2,85 @@
     <div class="d-flex justify-content-between">
         <h3 class="text-primary">Cadastrar</h3>
     </div>
+    <!-- FORMULARIO -->
+    <form novalidate [formGroup]="formulario">
+        <!-- DADOS DO CLIENTE -->
+        <div class="row mt-2">
+            <!-- NOME CLIENTE -->
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="Nome *" formControlName="nmCliente">
+            </div>
+            <!-- E-MAIL CLIENTE -->
+            <div class="col-sm-5">
+                <input type="text" class="form-control" placeholder="E-mail *" formControlName="email">
+            </div>
+            <!-- DATA NASCIMENTO -->
+            <div class="col-sm-2">
+                <input type="text" placeholder="Data Nascimento *" class="form-control" bsDatepicker
+                    [bsConfig]="bsConfig" formControlName="dtNascimento">
+            </div>
+        </div>
+        <!-- DADOS DO CLIENTE -->
+        <div class="row mt-2">
+            <!-- CPF CLIENTE -->
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="CPF *" mask="000.000.000-00" formControlName="cpf">
+            </div>
+            <!-- RG CLIENTE -->
+            <div class="col-sm-2">
+                <input type="text" class="form-control" placeholder="RG *" mask="00.000.000-0" formControlName="rg">
+            </div>
+            <!-- NATURALIDADE CLIENTE -->
+            <div class="col-sm-3">
+                <input type="select" class="form-control" placeholder="Naturalidade *" formControlName="naturalidade">
+            </div>
+            <!--  -->
+            <div class="col-sm-5">
+                <select class="custom-select" formControlName="profissao">
+                    <option value="" selected>Selecione *</option>
+                    <option *ngFor="let profissao of listaProf" value="{{profissao}}">{{ profissao }}</option>
+                </select>
+            </div>
+        </div>
+        <!-- DADOS DO CLIENTE -->
+        <div class="row mt-2">
+            <!-- CELULAR CLIENTE -->
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Celular *" mask="(00) 00000-0000"
+                    formControlName="telefoneCelular">
+            </div>
+            <!-- FIXO CLIENTE -->
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Fixo" mask="(00) 0000-0000"
+                    formControlName="telefoneFixo">
+            </div>
+            <!-- CELULAR 2 CLIENTE -->
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Celular 2" mask="(00) 00000-0000"
+                    formControlName="telefoneComercial">
+            </div>
+            <!-- EXTRA CLIENTE -->
+            <div class="col-sm-3">
+                <input type="text" class="form-control" placeholder="Extra" mask="(00) 0000-0000 || (00) 00000-0000"
+                    formControlName="telefoneExtra">
+            </div>
+        </div>
+    </form>
+    <!-- BOTOES  -->
+    <div class="container mt-4 mb-3 mr-3">
+        <div class="row">
+            <div class="col camp-ob">
+                * Campos obrigatorios.
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-dark mr-2" [routerLink]="['/gerenciamento/cli']">
+                    <i class="fas fa-arrow-circle-left"></i>
+                    Voltar
+                </button>
+                <button class="btn btn-primary" (click)="cadastrar()">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
